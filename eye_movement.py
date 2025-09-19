@@ -2,12 +2,12 @@ import cv2
 import numpy as np
 
 # --- CONFIGURATION ---
-video_source = "eye_rec0.flv" # video_source = 0 is for webcam
+video_source = "videos/eye_rec0.flv" # video_source = 0 is for webcam
 
 ROI_CONFIG = {
-    "eye_rec0.flv": (269, 795, 537, 1416),
-    "eye_rec1.flv": (50, 524, 100, 656),
-    "eye_rec2.flv": (0, 150, 0, 186)
+    "videos/eye_rec0.flv": (269, 795, 537, 1416),
+    "videos/eye_rec1.flv": (50, 524, 100, 656),
+    "videos/eye_rec2.flv": (0, 150, 0, 186)
 }
 
 # --- MAIN CODE ---
@@ -35,7 +35,7 @@ while True:
     # --- IMAGE PROCESSING ---
     rows, cols, _ = roi.shape
     gray_roi = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY) # make the vid gray
-    gray_roi = cv2.GaussianBlur(gray_roi, (7, 7), 0) # Use a larger kernel for better noise reduction, (1,1) for the unprofessional vids
+    gray_roi = cv2.GaussianBlur(gray_roi, (5,5), 0) # Use a larger kernel for better noise reduction, (1,1) for the unprofessional vids
 
     _, threshold = cv2.threshold(gray_roi, 3, 255, cv2.THRESH_BINARY_INV) 
         
@@ -91,8 +91,10 @@ while True:
     cv2.imshow("ROI", roi)
 
     key = cv2.waitKey(30)
-    if key == 27:
+    if key == 27: 
         break
+    if key == 32:  # Space tuşu ile duraklat / devam ettir
+        cv2.waitKey(-32) #wait until space key is pressed
 
 cap.release()
 cv2.destroyAllWindows()

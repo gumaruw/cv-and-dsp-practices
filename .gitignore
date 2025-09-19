@@ -1,2 +1,42 @@
+# Virtual environment folders
 venv/
+.venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# IDE/editor specific files
+.vscode/
+.idea/
+
+# Log files
+*.log
+
+# Environment files that may contain secrets
+.env
+.env.local
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+
+# Test/coverage files
+.pytest_cache/
+.coverage
+
+# Project specific folders to ignore
+screenshots/
+videos/
+
+# Video file extension to ignore
 *.flv
+*.mp4
+*.avi
+*.mov
